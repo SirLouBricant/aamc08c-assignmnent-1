@@ -1,0 +1,340 @@
+<!doctype html>
+<head>
+    <title>Gardens By The Bay</title>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+
+    <style>
+          #page-wrapper {
+            padding: 0 35px;
+            padding-top: 20px;
+            min-height: 568px;
+            background-color: white;
+        }
+        .page-header {
+            margin: 0 20px;
+        }
+        .panel-green {
+            border-color: #5cb85c;
+        }
+        .panel-green > .panel-heading {
+            border-color: #5cb85c;
+            color: white;
+            background-color: #5cb85c;
+        }
+        .panel-green > a {
+            color: #5cb85c;
+        }
+        .panel-green > a:hover {
+            color: #3d8b3d;
+        }
+        .panel-yellow {
+            border-color: #f0ad4e;
+        }
+        .panel-yellow > .panel-heading {
+            border-color: #f0ad4e;
+            color: white;
+            background-color: #f0ad4e;
+        }
+        .panel-yellow > a {
+            color: #f0ad4e;
+        }
+        .panel-yellow > a:hover {
+            color: #df8a13;
+        }
+
+        .imgRow > .imgColumn {
+            padding: 5px 8px;
+        }
+
+        .imgRow:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .imgColumn {
+            float: left;
+            width: 25%;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: black;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            width: 90%;
+            max-width: 1200px;
+        }
+        .close {
+            color: white;
+            position: absolute;
+            top: 55px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #999;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .mySlides {
+            display: none;
+        }
+
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -50px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        img.demo {
+            opacity: 0.6;
+        }
+
+        .active,
+        .demo:hover {
+            opacity: 1;
+        }
+
+        img.hover-shadow {
+            transition: 0.3s;
+        }
+
+        .hover-shadow:hover {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            cursor: pointer;
+        }
+        .listItem {
+            padding-left: 10px;
+        }
+        .listItem > li{
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    </style>
+    <script type="text/javascript">
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex-1].style.display = "block";
+        }
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Gardens By The Bay</a>
+            </div>
+        </nav>
+        <div id="page-wrapper">
+            <div class="row" style="padding:0 20px">
+                <div class="col-md-12">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <i class="fas fa-landmark"></i> Description
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-md-4">
+                                <img width="100%" style="margin-left: auto;margin-right: auto;display: block;" src="https://resources.thomascook.in/images/holidays/sightSeeing/Gardensbythebay850.jpg"> 
+                            </div>
+                            <div class="col-md-8">
+                                <p></p><br />
+                                <p>
+                                    The Gardens by the Bay is a nature park in the Central Region of Singapore, adjacent to the Marina Reservoir.
+                                    The park consists of three waterfront gardens: <strong>Bay South Garden</strong>, <strong>Bay East Garden</strong> and <strong>Bay Central Garden</strong>.
+                                    Its Flower Dome is the largest glass greenhouse in the world
+                                </p><br />
+                                <ul class="listItem">
+                                    <li>Bay South Garden</li>
+                                    <p>
+                                        Bay South Garden opened to the public on 29 June 2012. It is the largest of the three gardens at 54 hectares and is designed to show the best of tropical horticulture and garden artistry.
+                                        The overall concept of its master plan by Grant Associates draws inspiration from an orchid, the Vanda 'Miss Joaquim' as it is singapore's national flower.
+                                    </p>
+                                    <p class="hover_img">
+                                        The Bay South Garden also comprises of two cooled conservatories: the Flower Dome and the Cloud Forest, which is situated along the edge of Marina Reservoir.
+                                        The construction of the glasshouses is special in two ways. First of all by being able to have such large a glass-roof without additional interior support (such as columns). 
+                                        Secondly, because the constructions aim strongly at minimizing the environmental footprint. Rainwater is collected from the surface and circulated in the cooling system 
+                                        which is connected to the Supertrees. The Supertrees are used both to vent hot air and to cool circulated water.
+                                    </p>
+                                    <li>Bay East Garden</li>
+                                    <p>
+                                        Bay East Garden is 32 hectares in size and it has a 2-kilometre promenade frontage bordering the Marina Reservoir. An interim park was developed at Bay East Garden in support 
+                                        of the 2010 Summer Youth Olympics. The first phase of the garden was opened to the public in October 2011, allowing alternative access to the Marina Barrage.
+                                    </p>
+                                    <li>Bay Central Garden</li>
+                                    <p>
+                                        Bay Central Garden acts as a link between Bay South and Bay East Gardens. It stands at 15 hectares with a 3-kilometre waterfront promenade that allows for scenic walks 
+                                        stretching from the city centre to the east of Singapore
+                                    </p>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="padding:0 20px">
+                <div class="col-md-12">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <i class="fas fa-image"></i> Images
+                        </div>
+                        <div class="panel-body">
+                            <div class="imgRow">
+                                <div class="imgColumn">
+                                    <img width="100%" height="260px" src="https://planetofhotels.com/guide/sites/default/files/styles/paragraph__hero_banner__hb_image__1880bp/public/hero_banner/Gardens-by-the-Bay.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow">
+                                </div>
+                                <div class="imgColumn">
+                                    <img width="100%" height="260px" src="https://a.cdn-hotels.com/gdcs/production123/d1119/5f06e551-0b51-44e4-9816-0404bf62c25c.jpg" onclick="openModal();currentSlide(2)" class="hover-shadow">
+                                </div>
+                                <div class="imgColumn">
+                                    <img width="100%" height="260px" src="https://ik.imagekit.io/tvlk/xpe-asset/dsIfD0QxFcgaDmB6sQchobk5CmBu9PzsWhwFXGFxJ179jzSxIGG5kZNhhHY-p7nw/xxt/experience/image/GBTB-15-jpg-960x720-FIT-f7707c8de46b7b9c54fd6884899c0e26.jpeg?_src=imagekit&tr=c-at_max,h-500,q-60,w-612" onclick="openModal();currentSlide(3)" class="hover-shadow">
+                                </div>
+                                <div class="imgColumn">
+                                    <img width="100%" height="260px" src="https://cdn.i-scmp.com/sites/default/files/d8/images/canvas/2021/08/10/4dfca50d-aa15-4a9e-a365-721eadcd014c_aa6a348f.jpg" onclick="openModal();currentSlide(4)" class="hover-shadow">
+                                </div>
+                            </div>
+                            <div class="imgRow">
+                                <div class="imgColumn">
+                                    <img width="100%" height="260px" src="https://media.timeout.com/images/105770561/image.jpg" onclick="openModal();currentSlide(5)" class="hover-shadow">
+                                </div>
+                                <div class="imgColumn">
+                                    <img width="100%" height="260px" src="https://media.tacdn.com/media/attractions-splice-spp-674x446/08/c7/8f/98.jpg" onclick="openModal();currentSlide(6)" class="hover-shadow">
+                                </div>
+                                <div class="imgColumn">
+                                    <img width="100%" height="260px" src="https://ychef.files.bbci.co.uk/960x540/p051wn39.jpg" onclick="openModal();currentSlide(7)" class="hover-shadow">
+                                </div>
+                                <div class="imgColumn">
+                                    <img width="100%" height="260px" src="https://www.littledayout.com/wp-content/uploads/e-European-themed-display-2.jpg" onclick="openModal();currentSlide(8)" class="hover-shadow">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<div id="myModal" class="modal">
+    <span class="close cursor" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+
+        <div class="mySlides">
+            <div class="numbertext">1 / 8</div>
+            <img src="https://planetofhotels.com/guide/sites/default/files/styles/paragraph__hero_banner__hb_image__1880bp/public/hero_banner/Gardens-by-the-Bay.jpg" style="width:100%;height:800px;">
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">2 / 8</div>
+            <img src="https://a.cdn-hotels.com/gdcs/production123/d1119/5f06e551-0b51-44e4-9816-0404bf62c25c.jpg" style="width:100%;height:800px;">
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">3 / 8</div>
+            <img src="https://ik.imagekit.io/tvlk/xpe-asset/dsIfD0QxFcgaDmB6sQchobk5CmBu9PzsWhwFXGFxJ179jzSxIGG5kZNhhHY-p7nw/xxt/experience/image/GBTB-15-jpg-960x720-FIT-f7707c8de46b7b9c54fd6884899c0e26.jpeg?_src=imagekit&tr=c-at_max,h-500,q-60,w-612" style="width:100%;height:800px;">
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">4 / 8</div>
+            <img src="https://cdn.i-scmp.com/sites/default/files/d8/images/canvas/2021/08/10/4dfca50d-aa15-4a9e-a365-721eadcd014c_aa6a348f.jpg" style="width:100%;height:800px;">
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">5 / 8</div>
+            <img src="https://media.timeout.com/images/105770561/image.jpg" style="width:100%;height:800px;">
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">6 / 8</div>
+            <img src="https://media.tacdn.com/media/attractions-splice-spp-674x446/08/c7/8f/98.jpg" style="width:100%;height:800px;">
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">7 / 8</div>
+            <img src="https://ychef.files.bbci.co.uk/960x540/p051wn39.jpg" style="width:100%;height:800px;">
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">8 / 8</div>
+            <img src="https://www.littledayout.com/wp-content/uploads/e-European-themed-display-2.jpg" style="width:100%;height:800px;">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+</div>
